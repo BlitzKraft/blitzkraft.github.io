@@ -1,95 +1,42 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Blitzkraft by BlitzKraft</title>
+---
+layout: main
+---
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Blitzkraft</h1>
-        <p>Freelance code ninja - slicing bugs since 2014</p>
-
-
-        <p class="view"><a href="https://github.com/BlitzKraft">View My GitHub Profile</a></p>
-	<p class="view"><a href="./resume/index.html">My Resume</a></p>
-
-      </header>
-      <section>
-        <h3>
-<a id="about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h3>
-
-<p>I am an Industrial Engineer with a penchant for programming. I script, program, solve puzzles and write programs to solve puzzles for fun. I enjoy debugging/maintaining code. Without further ado, here's what I am good at:</p>
-
-<h4>
-<a id="web-dev" class="anchor" href="#web-dev" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Web dev</h4>
-
-<ul>
-<li>Full LAMP stack development, maintenance and administration</li>
-<li>Ruby on Rails</li>
-<li>Django and Python</li>
-<li>PHP and MySQL</li>
-<li>Linux servers - Apache, lighttpd</li>
-</ul>
-
-<h4>
-<a id="languages-and-scripting" class="anchor" href="#languages-and-scripting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Languages and scripting</h4>
-
-<ul>
-<li>Bash</li>
-<li>Python</li>
-<li>ruby</li>
-<li>C/C++</li>
-<li>javascript/jquery</li>
-<li>openSCAD</li>
-</ul>
-
-<h4>
-<a id="hardware" class="anchor" href="#hardware" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hardware</h4>
-
-<ul>
-<li>Arduino</li>
-<li>Raspberry pi</li>
-<li>Beaglebone</li>
-</ul>
-
-<h4>
-<a id="version-control" class="anchor" href="#version-control" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Version control</h4>
-
-<ul>
-<li>git</li>
-<li>CVS</li>
-</ul>
-
-<h4>
-<a id="3d-modelling" class="anchor" href="#3d-modelling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3D Modelling</h4>
-
-<ul>
-<li>Inventor</li>
-<li>openSCAD</li>
-<li>Wings3D</li>
-</ul>
-
-<h4>
-<a id="fun-stuff" class="anchor" href="#fun-stuff" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fun stuff</h4>
-
-<ul>
-<li>Recite any xkcd quote from memory</li>
-</ul>
-      </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
-</html>
+{% for post in paginator.posts %}
+  <article class="post">
+    <header>
+      <div class="title">
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <!-- <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p> -->
+      </div>
+      <div class="meta">
+        <time class="published" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%B %d, %Y" }}</time>
+        {% for category in post.categories limit:1 %}
+          <a href="#">{{ category }}</a>
+        {% endfor %}
+        <!--
+        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+        -->
+      </div>
+    </header>
+    {% if post.image %}
+      <a href="{{ post.url }}" class="image featured"><img src="{{post.image}}" alt="" /></a>
+    {% endif %}
+    {{ post.excerpt }}
+    <footer>
+      <ul class="actions">
+        <li><a href="{{ post.url }}" class="button big">Continue Reading</a></li>
+      </ul>
+      <ul class="stats">
+        {% for tag in post.tags limit:3 %}
+          <li><a href="#">{{ tag }}</a></li>
+        {% endfor %}
+        <!--
+        <li><a href="#">General</a></li>
+        <li><a href="#" class="icon fa-heart">28</a></li>
+        <li><a href="#" class="icon fa-comment">128</a></li>
+        -->
+      </ul>
+    </footer>
+  </article>
+{% endfor %}

@@ -1,0 +1,19 @@
+# Site settings
+title: BK Bolisetty
+email: bk@blitzkraft.me
+description: > # this means to ignore newlines until "baseurl:"
+  BK Bolisetty (BlitzKraft) is a self-claimed programming addict, with an
+  affinity for python. Available for freelance work and one-off projects.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://blitzkraft.github.io" # the base hostname & protocol for your site
+twitter_username: OneTrueBK
+github_username:  BlitzKraft
+
+# Build settings
+markdown: kramdown
+
+paginate: 4
+
+author: BK Bolisetty
+
+gems: [jekyll-paginate]
